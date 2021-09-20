@@ -21,8 +21,8 @@ class Contact:
         address = input("Enter address:\t")
         city = input("Enter city:\t")
         state = input("Enter state:\t")
-        zip = input("Enter zip code:\t")
-        phone_number = input("Enter phone number:\t")
+        zip = int(input("Enter zip code:\t"))
+        phone_number = int(input("Enter phone number:\t"))
         email = input("Enter email id:\t")
         contact_dict = {
             "first_name": first_name,
@@ -36,6 +36,3 @@ class Contact:
         }
         contact = Contact(contact_dict)
         return contact
-
-
-
