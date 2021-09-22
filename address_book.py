@@ -1,4 +1,5 @@
 import logging
+import pandas as pd
 
 from contact import Contact
 
@@ -18,6 +19,17 @@ class AddressBook:
     def add_contact(self):
         contact = Contact.create_contact()
         self.contact_list.append(contact)
+        df1 = pd.DataFrame({'First Name': [contact.first_name],
+                            'Last Name': [contact.last_name],
+                            'Address': [contact.address],
+                            'City': [contact.city],
+                            'State': [contact.state],
+                            'Zip': [contact.zip],
+                            'Phone Number': [contact.phone_number],
+                            'Email': [contact.email]})
+        df1.to_csv('address_book.csv', mode='a', header=False, index=False)
+        df = pd.read_csv('address_book.csv')
+        print(df)
 
     def display_contact(self):
         contacts = "\n".join(str(contact) for contact in self.contact_list)
@@ -92,5 +104,3 @@ if __name__ == "__main__":
                 logging.warning("Invalid option")
         except ValueError:
             logging.warning("Invalid Option selected")
-        except:
-            logging.warning("Invalid Option ")
